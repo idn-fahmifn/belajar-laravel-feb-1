@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -85,10 +86,13 @@ $request->validate([
     'nama' => 'string|min:2|max:20|required',
     'umur' => 'integer|min:1|max:100|required'
 ]);
-
 // mengolah nilai yang diinputkan.
 $request->session()->put('nama', $request->nama);
 $request->session()->put('umur', $request->umur);
 return redirect()->route('success');
-
 })->name('proses');
+
+Route::prefix('karyawan')->group(function(){
+    Route::get('divisi', [KaryawanController::class, 'index_divisi'])->name('karyawan.divisi');
+    Route::get('semua', [KaryawanController::class, 'karyawan_semua'])->name('karyawan.semua');
+});
