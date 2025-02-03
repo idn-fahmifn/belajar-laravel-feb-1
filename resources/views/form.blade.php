@@ -10,7 +10,8 @@
     <p>Masukan umur kamu dibawah : </p>
 
     <!-- form -->
-    <form action="#" method="post">
+    <form action="{{route('proses')}}" method="post">
+        @csrf
         <div class="group">
             <label>Masukan Nama Kamu</label>
             <input type="text" name="nama" required>

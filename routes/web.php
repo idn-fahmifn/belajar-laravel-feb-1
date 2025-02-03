@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\UmurMiddleware;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,11 +68,27 @@ Route::prefix('kelas')->group(function () {
 // Middleware
 
 // route untuk halaman form
-Route::get('halaman-form', function(){
+Route::get('form-umur', function(){
     return view('form');
 })->name('form-umur');
 
 // Route halaman berhasil
 Route::get('berhasil', function(){
     return 'Berhasil, umur anda memenuhi syarat';
-})->name('success');
+})->name('success')->middleware(UmurMiddleware::class);
+
+// Route untuk proses mengambil umur.
+Route::post('proses', function(Request $request){
+
+// validasi data
+$request->validate([
+    'nama' => 'string|min:2|max:20|required',
+    'umur' => 'integer|min:1|max:100|required'
+]);
+
+// mengolah nilai yang diinputkan.
+$request->session()->put('nama', $request->nama);
+$request->session()->put('umur', $request->umur);
+return redirect()->route('success');
+
+})->name('proses');
