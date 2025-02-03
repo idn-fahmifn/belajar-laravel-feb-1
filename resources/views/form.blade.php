@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Form Umur</title>
 </head>
+
 <body>
     <h1>Halaman Form Umur</h1>
     <p>Masukan umur kamu dibawah : </p>
+
+    <!-- menampilkan error middleware -->
+    @if (session('gagal'))
+    <span style="color: red;">Oops, ada error. {{session('gagal')}}</span>
+    @endif
+
+    <!-- menampilkan -->
+    @if ($errors->any())
+    @foreach ($errors->all() as $item)
+    <ul>
+        <li>{{$item}}</li>
+    </ul>
+    @endforeach
+    @endif
+
 
     <!-- form -->
     <form action="{{route('proses')}}" method="post">
@@ -26,4 +43,5 @@
     </form>
 
 </body>
+
 </html>

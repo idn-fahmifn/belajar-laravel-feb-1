@@ -21,6 +21,6 @@ class UmurMiddleware
             return $next($request);
         }
         // handle jika kurang dari 18 tahun.
-        return redirect()->route('form-umur')->with('gagal', 'umur belum memenuhi');
+        return redirect()->route('form-umur')->with('gagal', 'Cek kembali nama dan umurnya.');
     }
 }
