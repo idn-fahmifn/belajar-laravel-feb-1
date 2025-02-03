@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\MobilController;
 use App\Http\Middleware\UmurMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -96,3 +97,5 @@ Route::prefix('karyawan')->group(function(){
     Route::get('divisi', [KaryawanController::class, 'index_divisi'])->name('karyawan.divisi');
     Route::get('semua', [KaryawanController::class, 'karyawan_semua'])->name('karyawan.semua');
 });
+
+Route::resource('mobil', MobilController::class);

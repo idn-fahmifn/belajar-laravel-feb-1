@@ -8,7 +8,7 @@
 <body>
     <h1>Halaman Fahmi</h1>
 
-    <a href="{{route('example')}}">
-        Klik disini</a> untuk ke halaman contoh.
+    <a href="{{route('mobil.index')}}">
+        Klik disini</a> untuk ke halaman mobil.
 </body>
 </html>
