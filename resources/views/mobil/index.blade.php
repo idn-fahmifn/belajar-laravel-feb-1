@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- memanggil template -->
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobil</title>
-</head>
+<!-- area konten untuk halaman mobil. -->
 
-<body>
-    <h1>List Daftar Mobil saya</h1>
+@section('content')
 
-    <table>
-        <thead>
-            <th>Merek Mobil</th>
-            <th>Tahun Keluar</th>
-            <th>Jenis</th>
-        </thead>
-        <tbody>
-            @foreach ($mobil as $item)
-            <tr>
-                <td>{{$item->merek}}</td>
-                <td>{{$item->tahun_keluar}}</td>
-                <td>{{$item->jenis}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $mobil }}
-</body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-4 shadow-lg">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="card-title">
+                        <h5 class="text-bold">Data Mobil</h5>
+                        <p>List data mobil milik saya</p>
+                    </div>
 
-</html>
+                    <a href="#" class="btn btn-warning">Tambah Mobil</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Merk</th>
+                            <th>Tahun</th>
+                            <th>Jenis</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($mobil as $item)
+                            <tr>
+                                <td>{{$item->merek}}</td>
+                                <td>{{$item->tahun_keluar}}</td>
+                                <td>{{$item->jenis}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

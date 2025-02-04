@@ -99,3 +99,7 @@ Route::prefix('karyawan')->group(function(){
 });
 
 Route::resource('mobil', MobilController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
