@@ -6,12 +6,47 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <!-- detail mobil -->
+        <div class="col-md-4 mt-2">
             <div class="card p-4 shadow-lg">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="card-title">
-                        <h5 class="text-bold">Tambah Mobil</h5>
-                        <p>Form tambah mobil baru.</p>
+                        <h5 class="text-bold">{{$data->merek}}</h5>
+                        <p>Detail lengkap mobil {{ $data->merek }}.</p>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <tr>
+                        <th>Merek Mobil</th>
+                        <td>{{$data->merek}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tahun Produksi</th>
+                        <td>{{$data->tahun_keluar}}</td>
+                    </tr>
+                    <tr>
+                        <th>Jenis Mobil</th>
+                        <td>
+                            @if ($data->jenis == 'lcgc')
+                                <span class="badge text-bg-success">Mobil LCGC</span>
+                            @elseif($data->jenis == 'suv')
+                                <span class="badge text-bg-info">Mobil SUV</span>
+                            @else
+                                <span class="badge text-bg-secondary">Mobil Sport</span>
+                            @endif
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- edit mobil -->
+        <div class="col-md-8 mt-2">
+            <div class="card p-4 shadow-lg">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="card-title">
+                        <h5 class="text-bold">{{$data->merek}}</h5>
+                        <p>Detail lengkap mobil {{ $data->merek }}.</p>
                     </div>
                 </div>
                 <form action="{{route('mobil.store')}}" method="post">
@@ -47,7 +82,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 mt-4 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-warning">Tabah Mobil</button>
+                            <button type="submit" class="btn btn-warning">Update Mobil</button>
                         </div>
                     </div>
                 </form>

@@ -14,7 +14,7 @@ class MobilController extends Controller
     {
 
         // membuat variabel untuk menampikan semua data.
-        $mobil = Mobil::paginate(5);
+        $mobil = Mobil::all();
         return view('mobil.index', compact('mobil'));
     }
 
@@ -31,15 +31,25 @@ class MobilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $input = $request->all();
+        $request->validate([
+            'merek' => 'required|string|min:3|max:50',
+            'tahun_keluar' => 'required|string|min:4|max:4',
+            'jenis' => 'required',
+            'deskripsi' => 'required'
+        ]);
+        Mobil::create($input);
+        return redirect()->route('mobil.index')->with('success', 'Data berhasil dibuat');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        return 'Ini halaman detail data mobil';
+        $data = Mobil::findOrFail($id);
+        return view('mobil.detail', compact('data'));
     }
 
     /**

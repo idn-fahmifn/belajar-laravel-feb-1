@@ -15,7 +15,7 @@
                         <p>List data mobil milik saya</p>
                     </div>
 
-                    <a href="#" class="btn btn-warning">Tambah Mobil</a>
+                    <a href="{{route('mobil.create')}}" class="btn btn-warning">Tambah Mobil</a>
                 </div>
 
                 <div class="table-responsive">
