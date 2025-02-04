@@ -13,19 +13,17 @@
                     <div class="card-title">
                         <h5 class="text-bold">Data Mobil</h5>
                         <p>List data mobil milik saya</p>
-
-                        <!-- alert -->
-                        @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Yea!!</strong> {{ session('success') }}.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-
                     </div>
 
                     <a href="{{route('mobil.create')}}" class="btn btn-warning">Tambah Mobil</a>
                 </div>
+
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Yea!!</strong> {{ session('success') }}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
 
                 <div class="table-responsive">
                     <table class="table table-striped">

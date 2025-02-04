@@ -38,7 +38,6 @@
                     </tr>
                 </table>
                 {{ $data->deskripsi }}
-
                 <form action="{{route('mobil.destroy', $data->id)}}" method="post">
                     @csrf
                     @method('delete')
@@ -54,17 +53,17 @@
                     <div class="card-title">
                         <h5 class="text-bold">{{$data->merek}}</h5>
                         <p>Detail lengkap mobil {{ $data->merek }}.</p>
-
-                        <!-- alert -->
-                        @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Yea!!</strong> {{ session('success') }}.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-
                     </div>
                 </div>
+                
+                <!-- alert -->
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Yea!!</strong> {{ session('success') }}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
                 <form action="{{route('mobil.update', $data->id)}}" method="post">
                     @csrf
                     @method('put')
