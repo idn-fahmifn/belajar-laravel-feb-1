@@ -55,7 +55,7 @@
                         <p>Detail lengkap mobil {{ $data->merek }}.</p>
                     </div>
                 </div>
-                
+
                 <!-- alert -->
                 @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -97,7 +97,8 @@
                                 <textarea name="deskripsi" class="form-control p-2" required> {{ $data->deskripsi }} </textarea>
                             </div>
                         </div>
-                        <div class="col-md-12 mt-4 d-flex justify-content-end">
+                        <div class="col-md-12 mt-4 d-flex justify-content-end gap-4">
+                            <a href="{{route('mobil.index')}}" class="btn btn-outline-danger">Kembali</a>
                             <button type="submit" class="btn btn-warning">Update Mobil</button>
                         </div>
                     </div>
