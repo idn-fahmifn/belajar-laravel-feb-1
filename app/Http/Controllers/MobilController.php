@@ -63,22 +63,27 @@ class MobilController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $data = Mobil::findOrFail($id);
+        $request->validate([
+            'merek' => 'required|string|min:3|max:50',
+            'tahun_keluar' => 'required|string|min:4|max:4',
+            'jenis' => 'required',
+            'deskripsi' => 'required'
+        ]);
+        $data->update($input);
+        return back()->with('success', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    // tidak bisa dipanggil melalui resource.
-    public function report()
-    {
-        return 'report penjualan mobil';
+        $data = Mobil::findOrFail($id);
+        $data->delete();
+        return redirect()->route('mobil.index')->with('success', 'Data berhasil dihapus');
     }
 }

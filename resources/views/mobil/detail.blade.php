@@ -28,17 +28,22 @@
                         <th>Jenis Mobil</th>
                         <td>
                             @if ($data->jenis == 'lcgc')
-                                <span class="badge text-bg-success">Mobil LCGC</span>
+                            <span class="badge text-bg-success">Mobil LCGC</span>
                             @elseif($data->jenis == 'suv')
-                                <span class="badge text-bg-info">Mobil SUV</span>
+                            <span class="badge text-bg-info">Mobil SUV</span>
                             @else
-                                <span class="badge text-bg-secondary">Mobil Sport</span>
+                            <span class="badge text-bg-secondary">Mobil Sport</span>
                             @endif
                         </td>
                     </tr>
                 </table>
                 {{ $data->deskripsi }}
 
+                <form action="{{route('mobil.destroy', $data->id)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button class="btn text-danger p-0 mt-3 fw-bold" onclick="return confirm('Yakin ni mau dihapus?')">Hapus {{$data->merek}}</button>
+                </form>
             </div>
         </div>
 
@@ -49,6 +54,15 @@
                     <div class="card-title">
                         <h5 class="text-bold">{{$data->merek}}</h5>
                         <p>Detail lengkap mobil {{ $data->merek }}.</p>
+
+                        <!-- alert -->
+                        @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Yea!!</strong> {{ session('success') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+
                     </div>
                 </div>
                 <form action="{{route('mobil.update', $data->id)}}" method="post">
