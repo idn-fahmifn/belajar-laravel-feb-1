@@ -23,7 +23,7 @@ class MobilController extends Controller
      */
     public function create()
     {
-        return 'Ini halaman tambah data mobil';
+        return view('mobil.create');
     }
 
     /**
