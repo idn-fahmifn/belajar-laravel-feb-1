@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($mobil as $item)
                             <tr>
-                                <td>{{$item->merek}}</td>
+                                <td><a href={{ route('mobil.show', $item->id) }} class="btn fw-bold">{{$item->merek}}</a></td>
                                 <td>{{$item->tahun_keluar}}</td>
                                 <td>{{$item->jenis}}</td>
                             </tr>
